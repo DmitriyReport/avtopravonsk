@@ -17,7 +17,7 @@ const CONFIG = {
             title: '⚖️ Консультация автоюриста',
             phone: '+7 (923) 154-90-60',
             description: 'Помощь в спорах со страховыми, ГИБДД, оспаривании вины.',
-            telegram: 'https://t.me/Dmitriy_54' // Замените на реальный юзернейм
+            telegram: 'https://t.me/Avtopravonsk' // Замените на реальный юзернейм
         },
         'dtp-guide': {
             title: '📋 Что делать при ДТП: пошаговая инструкция',
@@ -129,4 +129,5 @@ document.getElementById('contact-form').addEventListener('submit', function (e) 
             alert('❌ Ошибка сети. Проверьте соединение.');
         });
 });
+
 
