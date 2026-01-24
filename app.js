@@ -55,7 +55,7 @@ function showService(serviceKey) {
         html += `
             <div class="contact-buttons">
                 <a href="tel:${service.phone.replace(/\s/g, '')}" class="phone-link">
-                    📞 Позвонить: ${service.phone}
+                    📞 ${service.phone}
                 </a>`;
         
         if (service.telegram) {
@@ -94,3 +94,4 @@ function showService(serviceKey) {
 function goBack() {
     document.getElementById('service-content').innerHTML = '';
 }
+
