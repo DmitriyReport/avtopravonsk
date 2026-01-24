@@ -2,18 +2,18 @@
 const SERVICES = {
     'tow-truck': {
         title: '🚚 Вызов эвакуатора',
-        phone: '+7 (999) 123-45-67',
+        phone: '+7 (962) 823-30-82',
         description: 'Круглосуточная служба эвакуации автомобилей в Новосибирске. Приедем в течение 30 минут по городу.'
     },
     'commissioner': {
         title: '👨‍💼 Вызов аварийного комиссара',
-        phone: '+7 (999) 987-65-43',
+        phone: '+7 (923) 154-90-60',
         description: 'Профессиональное оформление ДТП на месте для страховой компании. Работаем 24/7.'
     },
     'lawyer': {
         title: '⚖️ Консультация автоюриста',
-        phone: '+7 (999) 555-44-33',
-        telegram: 'https://t.me/Avtoyurist_NSK',
+        phone: '+7 (923) 154-90-60',
+        telegram: 'https://t.me/Avtopavonsk',
         description: 'Помощь в спорах со страховыми компаниями, ГИБДД, оспаривании виновности в ДТП.'
     },
     'dtp-guide': {
@@ -95,5 +95,6 @@ function showService(serviceKey) {
 function goBack() {
     document.getElementById('service-content').innerHTML = '';
 }
+
 
 
