@@ -1,18 +1,17 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>АвтоправоНСК</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Подключаем библиотеку Telegram Web App -->
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
 <body>
     <div class="container">
         <header>
-    <!-- Логотип вместо текста -->
-    <img src="logo.png" alt="АвтоправоНСК" class="logo">
+            <h1>🚗 АвтоправоНСК</h1>
+            <p>Помощь на дороге в Новосибирске</p>
         </header>
 
         <main class="main-buttons">
@@ -22,34 +21,16 @@
             <button class="btn btn-white" onclick="showService('dtp-guide')">Что делать при ДТП</button>
         </main>
 
-        <!-- Динамические секции будут появляться здесь -->
         <div id="service-content"></div>
 
-        <!-- Форма обратной связи (изначально скрыта) -->
-        <div class="form-container" id="feedback-form" style="display: none;">
-            <h3>Заказать обратный звонок</h3>
-            <form id="contact-form">
-                <input type="text" id="service-type" hidden>
-                <div class="input-group">
-                    <label for="name">Ваше имя:</label>
-                    <input type="text" id="name" required placeholder="Иван Иванов">
-                </div>
-                <div class="input-group">
-                    <label for="phone">Ваш телефон:</label>
-                    <input type="tel" id="phone" required placeholder="+7 999 123-45-67">
-                </div>
-                <button type="submit" class="btn btn-blue">Отправить заявку</button>
-                <button type="button" class="btn btn-white" onclick="goBack()">Назад</button>
-            </form>
-        </div>
-
         <footer>
-            <p>ⓒ 2023 АвтоправоНСК. Ваш помощник на дорогах.</p>
+            <p>ⓒ 2024 АвтоправоНСК. Ваш помощник на дорогах.</p>
+            <p style="font-size: 0.8rem; color: #888; margin-top: 10px;">
+                Все контакты актуальны. Просто нажмите для звонка.
+            </p>
         </footer>
     </div>
 
     <script src="app.js"></script>
 </body>
 </html>
-
-
