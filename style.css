@@ -22,16 +22,15 @@ body {
     padding: 20px;
 }
 
-/* ШАПКА - ИСПРАВЛЕНО */
 header {
     text-align: center;
     padding: 20px 0 15px 0;
-    border-bottom: 2px solid #1e88e5;
+    /* border-bottom удалена */
     margin-bottom: 25px;
 }
 
 .brand-title {
-    color: #1e88e5;
+    color: #0d47a1;  /* Темно-синий как у кнопок калькулятора */
     font-size: 2.2rem;
     font-weight: 800;
     letter-spacing: 1px;
@@ -40,7 +39,7 @@ header {
 }
 
 .brand-subtitle {
-    color: #333;
+    color: #1565c0;  /* Чуть светлее основного заголовка */
     font-size: 1.2rem;
     font-weight: 400;
     font-style: normal;
@@ -453,3 +452,4 @@ footer {
         font-size: 1.2rem;
     }
 }
+
