@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Калькулятор неустойки 2 - АвтоправоНСК</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="brand-title">АвтоправоНСК</div>
+            <div class="brand-subtitle">Калькулятор неустойки за просрочку выплаты</div>
+        </header>
+
+        <!-- Калькулятор 2 -->
+        <div class="calculator-payment-container">
+            <div class="calculator-header">
+                <h1 class="calculator-title">Неустойка за нарушение срока страховой выплаты/срока выдачи направления на ремонт ТС</h1>
+            </div>
+            
+            <div class="calculator-body">
+                
+                <div class="input-group">
+                    <label for="compensationAmount" class="input-label">Размер невыплаченного страхового возмещения (руб.)</label>
+                    <input type="number" id="compensationAmount" class="input-field" placeholder="Введите сумму в рублях" min="0" step="100" value="50000">
+                    <div class="input-note">Введите сумму страхового возмещения, которую страховая компания должна была выплатить</div>
+                </div>
+                
+                <div class="input-group">
+                    <label for="dueDate" class="input-label">Дата, когда страховая компания должна была осуществить выплату</label>
+                    <input type="date" id="dueDate" class="input-field">
+                    <div class="input-note">Укажите дату, когда истек срок для осуществления выплаты</div>
+                </div>
+                
+                <div class="input-group">
+                    <label for="calculationDatePayment" class="input-label">Дата расчета</label>
+                    <input type="date" id="calculationDatePayment" class="input-field">
+                    <div class="input-note">Укажите дату, на которую производится расчет неустойки</div>
+                </div>
+                
+                <button id="calculateBtnPayment" class="calculate-button">Рассчитать неустойку и штраф</button>
+                
+                <div class="holiday-info">
+                    <h4>Внимание!</h4>
+                    <p>Неустойка рассчитывается за каждый день просрочки осуществления страховой выплаты свыше 20 календарных дней (исключаются только праздничные дни) с момента подачи заявления о страховом случае.</p>
+                    <p><b>Калькулятор предназначен для предварительного расчета. Для точного расчета обратитесь к специалисту.</b></p>
+                </div>
+                
+                <div id="resultContainerPayment" class="result-container" style="display: none;">
+                    <h2 class="result-title">Результат расчета</h2>
+                    <div class="result-lines">
+                        <div class="result-line blue-bg">
+                            <span class="result-label">Неустойка:</span>
+                            <span id="resultPenaltyValue" class="result-value">0 рублей</span>
+                        </div>
+                        <div class="result-line blue-bg">
+                            <span class="result-label">Штраф 50%:</span>
+                            <span id="resultFineValue" class="result-value">0 рублей</span>
+                        </div>
+                        <div class="result-line green-bg">
+                            <span class="result-label">Общая сумма к выплате:</span>
+                            <span id="resultTotalValue" class="result-value">0 рублей</span>
+                        </div>
+                    </div>
+                    <div id="resultDetailsPayment" class="result-details"></div>
+                </div>
+            </div>
+        </div>
+
+        <div style="margin-top: 20px; text-align: center;">
+            <a href="index.html" class="btn btn-white">
+                ← Вернуться на главную
+            </a>
+        </div>
+
+        <footer>
+            <p>ⓒ 2024 АвтоправоНСК. Ваш помощник на дорогах.</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
