@@ -339,3 +339,127 @@ footer {
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
 }
+/* Стили для второго калькулятора */
+.calculator-payment-container {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    max-width: 800px;
+    overflow: hidden;
+    margin: 0 auto 40px auto;
+    padding: 20px;
+}
+
+.result-lines {
+    margin: 20px 0;
+}
+
+.result-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    margin-bottom: 8px;
+    border-radius: 8px;
+    border-left: 4px solid;
+}
+
+.blue-bg {
+    background-color: #e8f4fc;
+    border-left-color: #3498db;
+}
+
+.green-bg {
+    background-color: #e8f8f0;
+    border-left-color: #27ae60;
+}
+
+.result-label {
+    font-size: 16px;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.result-value {
+    font-size: 18px;
+    font-weight: 700;
+    color: #2c3e50;
+}
+
+.green-bg .result-value {
+    color: #27ae60;
+    font-size: 20px;
+}
+
+.penalty-section {
+    background-color: #fff8e1;
+    border-left: 4px solid #ffc107;
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 0 8px 8px 0;
+}
+
+.fine-section {
+    background-color: #ffeaea;
+    border-left: 4px solid #e74c3c;
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 0 8px 8px 0;
+}
+
+.no-penalty {
+    color: #27ae60;
+    font-weight: 600;
+    padding: 10px;
+    background-color: #d4edda;
+    border-radius: 5px;
+    margin: 10px 0;
+}
+
+.penalty-applied {
+    color: #e74c3c;
+    font-weight: 600;
+    padding: 10px;
+    background-color: #f8d7da;
+    border-radius: 5px;
+    margin: 10px 0;
+}
+
+@media (max-width: 600px) {
+    .result-line {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 12px 15px;
+    }
+    
+    .result-label {
+        margin-bottom: 5px;
+        font-size: 15px;
+    }
+    
+    .result-value {
+        font-size: 16px;
+        align-self: flex-end;
+    }
+    
+    .green-bg .result-value {
+        font-size: 18px;
+    }
+}
+.btn-calc2 {
+    background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+    color: white;
+    border: none;
+    padding: 18px;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-calc2:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(46, 204, 113, 0.4);
+}
