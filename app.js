@@ -124,7 +124,7 @@ function hideCalculator() {
     document.getElementById('service-content').style.display = 'block';
     document.getElementById('calculator-block').style.display = 'none';
 }
-// Функция для показа второго калькулятора (после функции hideCalculator())
+// Функция для показа второго калькулятора
 function showCalculator2() {
     // Скрываем обычный контент и первый калькулятор
     document.getElementById('service-content').style.display = 'none';
@@ -147,6 +147,39 @@ function showCalculator2() {
         backButton.innerHTML = '<button class="btn btn-white" onclick="hideCalculator2()">← Вернуться к выбору услуги</button>';
         calculator2Block.appendChild(backButton);
     }
+    
+// Функция установки дат по умолчанию для второго калькулятора
+function setDefaultDatesForCalculator2() {
+    const today = new Date();
+    const formattedToday = today.toISOString().split('T')[0];
+    
+    const dueDateInput = document.getElementById('dueDate');
+    const calculationDateInput = document.getElementById('calculationDatePayment');
+    
+    if (dueDateInput) {
+        const twentyDaysAgo = new Date();
+        twentyDaysAgo.setDate(today.getDate() - 20);
+        const formattedTwentyDaysAgo = twentyDaysAgo.toISOString().split('T')[0];
+        dueDateInput.value = formattedTwentyDaysAgo;
+    }
+    
+    if (calculationDateInput) {
+        calculationDateInput.value = formattedToday;
+    }
+}
+    // ПОДКЛЮЧАЕМ ОБРАБОТЧИК ЗАНОВО!
+    setTimeout(function() {
+        const calcBtn = document.getElementById('calculateBtnPayment');
+        if (calcBtn) {
+            // Удаляем старый обработчик, если есть
+            calcBtn.removeEventListener('click', calculatePaymentPenalty);
+            // Добавляем новый
+            calcBtn.addEventListener('click', calculatePaymentPenalty);
+            console.log('Обработчик для второго калькулятора подключен');
+        } else {
+            console.error('Кнопка calculateBtnPayment не найдена!');
+        }
+    }, 100);
     
     // Прокручиваем к началу
     window.scrollTo(0, 0);
@@ -559,4 +592,5 @@ function calculatePaymentPenalty() {
 if (document.getElementById('calculateBtnPayment')) {
     document.getElementById('calculateBtnPayment').addEventListener('click', calculatePaymentPenalty);
 }
+
 
