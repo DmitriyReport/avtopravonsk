@@ -336,10 +336,6 @@ footer {
     box-shadow: 0 4px 15px rgba(30, 136, 229, 0.3);
 }
 
-.btn-calc:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
-}
 /* Стили для второго калькулятора */
 .calculator-payment-container {
     background-color: #ffffff;
@@ -461,8 +457,14 @@ footer {
     box-shadow: 0 4px 15px rgba(30, 136, 229, 0.3);
 }
 
-.btn-calc2:hover {
+.btn-calc:hover, .btn-calc2:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(46, 204, 113, 0.4);
+    box-shadow: 0 8px 25px rgba(30, 136, 229, 0.5);
+}
+@media (max-width: 600px) {
+    .btn-calc, .btn-calc2 {
+        padding: 15px;
+        font-size: 1rem;
+    }
 }
 
