@@ -17,8 +17,12 @@ const SERVICES = {
         description: 'Помощь в спорах со страховыми компаниями, ГИБДД, оспаривании виновности в ДТП.'
     },
     'calculator': {
-        title: '🧮 Калькулятор неустойки по ОСАГО',
+        title: '🧮 Калькулятор неустойки по ОСАГО 1',
         description: 'Рассчитайте неустойку за просрочку ремонта'
+    },
+    'calculator2': {
+        title: '🧮 Калькулятор неустойки по ОСАГО 2',
+        description: 'Неустойка за нарушение срока страховой выплаты'
     },
     'dtp-guide': {
         title: '📋 Что делать при ДТП: пошаговая инструкция',
@@ -45,9 +49,28 @@ if (tg) {
 
 // Показать выбранную услугу
 function showService(serviceKey) {
+    // Скрываем оба калькулятора
+    if (document.getElementById('calculator-block')) {
+        document.getElementById('calculator-block').style.display = 'none';
+    }
+    if (document.getElementById('calculator-payment-block')) {
+        document.getElementById('calculator-payment-block').style.display = 'none';
+    }
+    
+    if (serviceKey === 'calculator') {
+        showCalculator();
+        return;
+    }
+    
+    if (serviceKey === 'calculator2') {
+        showCalculator2();
+        return;
+    }
+    
     const contentDiv = document.getElementById('service-content');
     const service = SERVICES[serviceKey];
-
+    
+    contentDiv.style.display = 'block';
     contentDiv.innerHTML = '';
     
     let html = `<div class="service-info">
@@ -96,20 +119,34 @@ function showService(serviceKey) {
 
 // Вернуться на главную
 function goBack() {
+    document.getElementById('service-content').style.display = 'block';
     document.getElementById('service-content').innerHTML = '';
+    if (document.getElementById('calculator-block')) {
+        document.getElementById('calculator-block').style.display = 'none';
+    }
+    if (document.getElementById('calculator-payment-block')) {
+        document.getElementById('calculator-payment-block').style.display = 'none';
+    }
 }
-// Функция для показа калькулятора (добавить после goBack())
+
+// Функция для показа первого калькулятора
 function showCalculator() {
-    // Скрываем обычный контент
+    // Скрываем обычный контент и второй калькулятор
     document.getElementById('service-content').style.display = 'none';
     
-    // Показываем калькулятор
+    const calculator2Block = document.getElementById('calculator-payment-block');
+    if (calculator2Block) {
+        calculator2Block.style.display = 'none';
+    }
+    
+    // Показываем первый калькулятор
     const calculatorBlock = document.getElementById('calculator-block');
     calculatorBlock.style.display = 'block';
     
     // Добавляем кнопку "Назад" если её нет
     if (!document.getElementById('calculator-back-btn')) {
         const backButton = document.createElement('div');
+        backButton.id = 'calculator-back-btn';
         backButton.style.marginTop = '20px';
         backButton.innerHTML = '<button class="btn btn-white" onclick="hideCalculator()">← Вернуться к выбору услуги</button>';
         calculatorBlock.appendChild(backButton);
@@ -119,35 +156,12 @@ function showCalculator() {
     window.scrollTo(0, 0);
 }
 
-// Функция скрытия калькулятора
+// Функция скрытия первого калькулятора
 function hideCalculator() {
     document.getElementById('service-content').style.display = 'block';
     document.getElementById('calculator-block').style.display = 'none';
 }
-// Функция для показа второго калькулятора
-function showCalculator2() {
-    // Скрываем обычный контент и первый калькулятор
-    document.getElementById('service-content').style.display = 'none';
-    
-    const calculator1Block = document.getElementById('calculator-block');
-    if (calculator1Block) {
-        calculator1Block.style.display = 'none';
-    }
-    
-    // Показываем второй калькулятор
-    const calculator2Block = document.getElementById('calculator-payment-block');
-    calculator2Block.style.display = 'block';
-    
-    // Добавляем кнопку "Назад" если её нет
-    if (!document.getElementById('calculator2-back-btn')) {
-        const backButton = document.createElement('div');
-        backButton.id = 'calculator2-back-btn';
-        backButton.style.marginTop = '20px';
-        backButton.style.marginBottom = '40px';
-        backButton.innerHTML = '<button class="btn btn-white" onclick="hideCalculator2()">← Вернуться к выбору услуги</button>';
-        calculator2Block.appendChild(backButton);
-    }
-    
+
 // Функция установки дат по умолчанию для второго калькулятора
 function setDefaultDatesForCalculator2() {
     const today = new Date();
@@ -167,6 +181,34 @@ function setDefaultDatesForCalculator2() {
         calculationDateInput.value = formattedToday;
     }
 }
+
+// Функция для показа второго калькулятора
+function showCalculator2() {
+    // Скрываем обычный контент и первый калькулятор
+    document.getElementById('service-content').style.display = 'none';
+    
+    const calculator1Block = document.getElementById('calculator-block');
+    if (calculator1Block) {
+        calculator1Block.style.display = 'none';
+    }
+    
+    // Показываем второй калькулятор
+    const calculator2Block = document.getElementById('calculator-payment-block');
+    calculator2Block.style.display = 'block';
+    
+    // Устанавливаем значения дат по умолчанию
+    setDefaultDatesForCalculator2();
+    
+    // Добавляем кнопку "Назад" если её нет
+    if (!document.getElementById('calculator2-back-btn')) {
+        const backButton = document.createElement('div');
+        backButton.id = 'calculator2-back-btn';
+        backButton.style.marginTop = '20px';
+        backButton.style.marginBottom = '40px';
+        backButton.innerHTML = '<button class="btn btn-white" onclick="hideCalculator2()">← Вернуться к выбору услуги</button>';
+        calculator2Block.appendChild(backButton);
+    }
+    
     // ПОДКЛЮЧАЕМ ОБРАБОТЧИК ЗАНОВО!
     setTimeout(function() {
         const calcBtn = document.getElementById('calculateBtnPayment');
@@ -190,32 +232,9 @@ function hideCalculator2() {
     document.getElementById('service-content').style.display = 'block';
     document.getElementById('calculator-payment-block').style.display = 'none';
 }
-// Обновляем showService для обработки калькулятора
-function showService(serviceKey) {
-    // Скрываем оба калькулятора
-    if (document.getElementById('calculator-block')) {
-        document.getElementById('calculator-block').style.display = 'none';
-    }
-    if (document.getElementById('calculator-payment-block')) {
-        document.getElementById('calculator-payment-block').style.display = 'none';
-    }
-    
-    if (serviceKey === 'calculator') {
-        showCalculator();
-        return;
-    }
-    
-    if (serviceKey === 'calculator2') {
-        showCalculator2();
-        return;
-    }
-    
-    document.getElementById('service-content').style.display = 'block';
-    
-    // Остальной код showService...
-}
+
 // ============================================
-// КАЛЬКУЛЯТОР НЕУСТОЙКИ (вставить в КОНЕЦ файла)
+// КАЛЬКУЛЯТОР 1: НЕУСТОЙКА ЗА ПРОСРОЧКУ РЕМОНТА
 // ============================================
 
 // Список официальных праздничных дней РФ (2024-2026 гг.)
@@ -332,7 +351,15 @@ function formatDate(date) {
     });
 }
 
-// Функция расчета неустойки для ремонта
+// Функция форматирования суммы
+function formatAmount(amount) {
+    return amount.toLocaleString('ru-RU', {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+    });
+}
+
+// Функция расчета неустойки для ремонта (калькулятор 1)
 function calculateRepairPenalty() {
     const repairCost = parseFloat(document.getElementById('repairCost').value);
     const startDateStr = document.getElementById('startDate').value;
@@ -402,12 +429,6 @@ function calculateRepairPenalty() {
     document.getElementById('resultContainerRepair').style.display = 'block';
 }
 
-// Инициализация калькулятора при загрузке
-document.addEventListener('DOMContentLoaded', function() {
-    if (document.getElementById('calculateBtnRepair')) {
-        document.getElementById('calculateBtnRepair').addEventListener('click', calculateRepairPenalty);
-    }
-});
 // ============================================
 // КАЛЬКУЛЯТОР 2: НЕУСТОЙКА ЗА НАРУШЕНИЕ СРОКА ВЫПЛАТЫ
 // ============================================
@@ -499,9 +520,10 @@ function getHolidaysInPeriod2(startDate, endDate) {
     const holidaysInPeriod = [];
     const currentDate = new Date(startDate);
     currentDate.setHours(0, 0, 0, 0);
-    endDate.setHours(0, 0, 0, 0);
+    const finalDate = new Date(endDate);
+    finalDate.setHours(0, 0, 0, 0);
     
-    while (currentDate <= endDate) {
+    while (currentDate <= finalDate) {
         if (isHoliday2(new Date(currentDate))) {
             const formattedHoliday = formatDate(new Date(currentDate));
             holidaysInPeriod.push(formattedHoliday);
@@ -512,8 +534,10 @@ function getHolidaysInPeriod2(startDate, endDate) {
     return holidaysInPeriod;
 }
 
-// Функция расчета неустойки и штрафа
+// Функция расчета неустойки и штрафа (калькулятор 2)
 function calculatePaymentPenalty() {
+    console.log('Функция calculatePaymentPenalty вызвана!');
+    
     const compensationAmount = parseFloat(document.getElementById('compensationAmount').value);
     const dueDateStr = document.getElementById('dueDate').value;
     const calculationDateStr = document.getElementById('calculationDatePayment').value;
@@ -539,7 +563,6 @@ function calculatePaymentPenalty() {
     
     const deadlineDate = getDeadlineDate2(dueDate);
     const overdueDays = countOverdueDays2(deadlineDate, calculationDate);
-    const totalCalendarDays = countCalendarDays2(dueDate, calculationDate);
     
     const penalty = compensationAmount * (1 / 100) * overdueDays;
     
@@ -584,13 +607,34 @@ function calculatePaymentPenalty() {
         <p><small><i>В расчете учтены все официальные праздничные дни на 2024-2026 годы.</i></small></p>
     `;
     
-    document.getElementById('resultDetailsPayment').innerHTML = detailsHtml;
-    document.getElementById('resultContainerPayment').style.display = 'block';
+    const resultDetails = document.getElementById('resultDetailsPayment');
+    if (resultDetails) {
+        resultDetails.innerHTML = detailsHtml;
+    }
+    
+    const resultContainer = document.getElementById('resultContainerPayment');
+    if (resultContainer) {
+        resultContainer.style.display = 'block';
+    }
 }
 
-// Инициализация второго калькулятора
-if (document.getElementById('calculateBtnPayment')) {
-    document.getElementById('calculateBtnPayment').addEventListener('click', calculatePaymentPenalty);
-}
-
-
+// Инициализация при загрузке страницы
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('Страница загружена, инициализация калькуляторов...');
+    
+    // Инициализация первого калькулятора
+    const calcBtn1 = document.getElementById('calculateBtnRepair');
+    if (calcBtn1) {
+        calcBtn1.addEventListener('click', calculateRepairPenalty);
+        console.log('Калькулятор 1 инициализирован');
+    }
+    
+    // Инициализация второго калькулятора
+    const calcBtn2 = document.getElementById('calculateBtnPayment');
+    if (calcBtn2) {
+        calcBtn2.addEventListener('click', calculatePaymentPenalty);
+        console.log('Калькулятор 2 инициализирован');
+    } else {
+        console.log('Кнопка второго калькулятора будет инициализирована позже');
+    }
+});
