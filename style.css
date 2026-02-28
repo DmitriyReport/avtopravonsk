@@ -22,6 +22,7 @@ body {
     padding: 20px;
 }
 
+/* ШАПКА - ИСПРАВЛЕНО */
 header {
     text-align: center;
     padding: 20px 0 15px 0;
@@ -35,14 +36,13 @@ header {
     font-weight: 800;
     letter-spacing: 1px;
     line-height: 1.2;
-    font-family: 'Segoe UI', 'Arial Black', sans-serif;
+    margin-bottom: 5px;
 }
 
 .brand-subtitle {
     color: #333;
     font-size: 1.2rem;
     font-weight: 400;
-    margin-top: 5px;
     font-style: normal;
     letter-spacing: 0.5px;
 }
@@ -96,6 +96,48 @@ header {
 
 .btn-white:hover {
     background-color: #e3f2fd;
+}
+
+/* КНОПКИ КАЛЬКУЛЯТОРОВ - ИСПРАВЛЕНО */
+.btn-calc {
+    background-color: #0d47a1;
+    color: white;
+    border: none;
+    padding: 18px;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+}
+
+.btn-calc2 {
+    background-color: #0d47a1;
+    color: white;
+    border: none;
+    padding: 18px;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+}
+
+.btn-calc:hover, .btn-calc2:hover {
+    background-color: #1565c0;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+@media (max-width: 600px) {
+    .btn-calc, .btn-calc2 {
+        padding: 15px;
+        font-size: 1rem;
+    }
 }
 
 .service-info {
@@ -172,7 +214,10 @@ footer {
     text-decoration: none;
     display: block;
 }
-/* Стили для калькулятора неустойки */
+
+/* ============================================ */
+/* СТИЛИ ДЛЯ КАЛЬКУЛЯТОРА 1 */
+/* ============================================ */
 .calculator-repair-container {
     background-color: #ffffff;
     border-radius: 10px;
@@ -320,40 +365,9 @@ footer {
     color: #1e88e5;
 }
 
-@media (max-width: 600px) {
-    .result-line {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 12px 15px;
-    }
-    
-    .result-label {
-        margin-bottom: 5px;
-        font-size: 15px;
-    }
-    
-    .result-value {
-        font-size: 16px;
-        align-self: flex-end;
-    }
-    
-    .calculator-title {
-        font-size: 1.2rem;
-    }
-}
-.btn-calc {
-    background-color: #0d47a1; /* Темно-синий */
-    color: white;
-    border: none;
-    padding: 18px;
-    border-radius: 12px;
-    font-size: 1.1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-/* Стили для второго калькулятора */
+/* ============================================ */
+/* СТИЛИ ДЛЯ КАЛЬКУЛЯТОРА 2 */
+/* ============================================ */
 .calculator-payment-container {
     background-color: #ffffff;
     border-radius: 10px;
@@ -369,36 +383,9 @@ footer {
     margin: 20px 0;
 }
 
-.result-line {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 20px;
-    margin-bottom: 8px;
-    border-radius: 8px;
-    border-left: 4px solid;
-}
-
-.blue-bg {
-    background-color: #e8f4fc;
-    border-left-color: #3498db;
-}
-
 .green-bg {
     background-color: #e8f8f0;
     border-left-color: #27ae60;
-}
-
-.result-label {
-    font-size: 16px;
-    font-weight: 600;
-    color: #2c3e50;
-}
-
-.result-value {
-    font-size: 18px;
-    font-weight: 700;
-    color: #2c3e50;
 }
 
 .green-bg .result-value {
@@ -440,6 +427,7 @@ footer {
     margin: 10px 0;
 }
 
+/* МЕДИА-ЗАПРОСЫ ДЛЯ МОБИЛЬНЫХ */
 @media (max-width: 600px) {
     .result-line {
         flex-direction: column;
@@ -460,29 +448,8 @@ footer {
     .green-bg .result-value {
         font-size: 18px;
     }
-}
-.btn-calc2 {
-    background-color: #0d47a1; /* Темно-синий */
-    color: white;
-    border: none;
-    padding: 18px;
-    border-radius: 12px;
-    font-size: 1.1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.btn-calc:hover, .btn-calc2:hover {
-    background-color: #1565c0; /* При наведении светлее */
-    transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-}
-@media (max-width: 600px) {
-    .btn-calc, .btn-calc2 {
-        padding: 15px;
-        font-size: 1rem;
+    
+    .calculator-title {
+        font-size: 1.2rem;
     }
 }
-
