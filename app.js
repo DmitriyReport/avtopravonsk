@@ -124,24 +124,62 @@ function hideCalculator() {
     document.getElementById('service-content').style.display = 'block';
     document.getElementById('calculator-block').style.display = 'none';
 }
+// Функция для показа второго калькулятора (после функции hideCalculator())
+function showCalculator2() {
+    // Скрываем обычный контент и первый калькулятор
+    document.getElementById('service-content').style.display = 'none';
+    
+    const calculator1Block = document.getElementById('calculator-block');
+    if (calculator1Block) {
+        calculator1Block.style.display = 'none';
+    }
+    
+    // Показываем второй калькулятор
+    const calculator2Block = document.getElementById('calculator-payment-block');
+    calculator2Block.style.display = 'block';
+    
+    // Добавляем кнопку "Назад" если её нет
+    if (!document.getElementById('calculator2-back-btn')) {
+        const backButton = document.createElement('div');
+        backButton.id = 'calculator2-back-btn';
+        backButton.style.marginTop = '20px';
+        backButton.style.marginBottom = '40px';
+        backButton.innerHTML = '<button class="btn btn-white" onclick="hideCalculator2()">← Вернуться к выбору услуги</button>';
+        calculator2Block.appendChild(backButton);
+    }
+    
+    // Прокручиваем к началу
+    window.scrollTo(0, 0);
+}
 
+// Функция скрытия второго калькулятора
+function hideCalculator2() {
+    document.getElementById('service-content').style.display = 'block';
+    document.getElementById('calculator-payment-block').style.display = 'none';
+}
 // Обновляем showService для обработки калькулятора
 function showService(serviceKey) {
+    // Скрываем оба калькулятора
+    if (document.getElementById('calculator-block')) {
+        document.getElementById('calculator-block').style.display = 'none';
+    }
+    if (document.getElementById('calculator-payment-block')) {
+        document.getElementById('calculator-payment-block').style.display = 'none';
+    }
+    
     if (serviceKey === 'calculator') {
         showCalculator();
         return;
     }
     
-    // Если открыта другая услуга, скрываем калькулятор
-    const calculatorBlock = document.getElementById('calculator-block');
-    if (calculatorBlock) {
-        calculatorBlock.style.display = 'none';
+    if (serviceKey === 'calculator2') {
+        showCalculator2();
+        return;
     }
     
     document.getElementById('service-content').style.display = 'block';
     
     // Остальной код showService...
-    // (весь существующий код функции остается без изменений)
 }
 // ============================================
 // КАЛЬКУЛЯТОР НЕУСТОЙКИ (вставить в КОНЕЦ файла)
@@ -337,4 +375,188 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('calculateBtnRepair').addEventListener('click', calculateRepairPenalty);
     }
 });
+// ============================================
+// КАЛЬКУЛЯТОР 2: НЕУСТОЙКА ЗА НАРУШЕНИЕ СРОКА ВЫПЛАТЫ
+// ============================================
+
+// Список официальных праздничных дней РФ (только указанные даты)
+const holidays2 = [
+    // 2024 год
+    '2024-01-01', '2024-01-02', '2024-01-03', '2024-01-04', '2024-01-05', '2024-01-06', '2024-01-07',
+    '2024-02-23',
+    '2024-03-08',
+    '2024-05-01', '2024-05-09',
+    '2024-06-12',
+    '2024-11-04',
+    
+    // 2025 год
+    '2025-01-01', '2025-01-02', '2025-01-03', '2025-01-04', '2025-01-05', '2025-01-06', '2025-01-07',
+    '2025-02-23',
+    '2025-03-08',
+    '2025-05-01', '2025-05-09',
+    '2025-06-12',
+    '2025-11-04',
+    
+    // 2026 год
+    '2026-01-01', '2026-01-02', '2026-01-03', '2026-01-04', '2026-01-05', '2026-01-06', '2026-01-07', '2026-01-08',
+    '2026-02-23',
+    '2026-03-08',
+    '2026-05-01', '2026-05-09',
+    '2026-06-12',
+    '2026-11-04'
+];
+
+// Функция проверки, является ли день праздничным
+function isHoliday2(date) {
+    const dateStr = date.toISOString().split('T')[0];
+    return holidays2.includes(dateStr);
+}
+
+// Функция: Определение даты, когда заканчиваются 20 рабочих (без праздников) дней
+function getDeadlineDate2(startDate) {
+    let deadline = new Date(startDate);
+    let workingDaysCounted = 0;
+    
+    while (workingDaysCounted < 20) {
+        if (!isHoliday2(new Date(deadline))) {
+            workingDaysCounted++;
+        }
+        if (workingDaysCounted < 20) {
+            deadline.setDate(deadline.getDate() + 1);
+        }
+    }
+    
+    let nextDay = new Date(deadline);
+    nextDay.setDate(nextDay.getDate() + 1);
+    
+    while (isHoliday2(nextDay)) {
+        nextDay.setDate(nextDay.getDate() + 1);
+    }
+    
+    return nextDay;
+}
+
+// Функция подсчета дней просрочки
+function countOverdueDays2(deadlineDate, endDate) {
+    if (endDate < deadlineDate) return 0;
+    
+    let count = 0;
+    const currentDate = new Date(deadlineDate);
+    const finalDate = new Date(endDate);
+    
+    currentDate.setHours(0, 0, 0, 0);
+    finalDate.setHours(0, 0, 0, 0);
+    
+    while (currentDate <= finalDate) {
+        count++;
+        currentDate.setDate(currentDate.getDate() + 1);
+    }
+    
+    return count;
+}
+
+// Функция подсчета всех календарных дней между датами
+function countCalendarDays2(startDate, endDate) {
+    const timeDiff = endDate.getTime() - startDate.getTime();
+    return Math.ceil(timeDiff / (1000 * 3600 * 24));
+}
+
+// Функция получения праздничных дней в периоде
+function getHolidaysInPeriod2(startDate, endDate) {
+    const holidaysInPeriod = [];
+    const currentDate = new Date(startDate);
+    currentDate.setHours(0, 0, 0, 0);
+    endDate.setHours(0, 0, 0, 0);
+    
+    while (currentDate <= endDate) {
+        if (isHoliday2(new Date(currentDate))) {
+            const formattedHoliday = formatDate(new Date(currentDate));
+            holidaysInPeriod.push(formattedHoliday);
+        }
+        currentDate.setDate(currentDate.getDate() + 1);
+    }
+    
+    return holidaysInPeriod;
+}
+
+// Функция расчета неустойки и штрафа
+function calculatePaymentPenalty() {
+    const compensationAmount = parseFloat(document.getElementById('compensationAmount').value);
+    const dueDateStr = document.getElementById('dueDate').value;
+    const calculationDateStr = document.getElementById('calculationDatePayment').value;
+    
+    if (!compensationAmount || compensationAmount <= 0 || isNaN(compensationAmount)) {
+        alert('Пожалуйста, введите корректную сумму страхового возмещения');
+        document.getElementById('compensationAmount').focus();
+        return;
+    }
+    
+    if (!dueDateStr || !calculationDateStr) {
+        alert('Пожалуйста, заполните обе даты');
+        return;
+    }
+    
+    const dueDate = new Date(dueDateStr);
+    const calculationDate = new Date(calculationDateStr);
+    
+    if (calculationDate < dueDate) {
+        alert('Дата расчета должна быть позже даты обязательной выплаты');
+        return;
+    }
+    
+    const deadlineDate = getDeadlineDate2(dueDate);
+    const overdueDays = countOverdueDays2(deadlineDate, calculationDate);
+    const totalCalendarDays = countCalendarDays2(dueDate, calculationDate);
+    
+    const penalty = compensationAmount * (1 / 100) * overdueDays;
+    
+    let fine = 0;
+    if (overdueDays > 0) {
+        fine = (compensationAmount + penalty) * 0.5;
+    }
+    
+    const totalAmount = compensationAmount + penalty + fine;
+    
+    const holidayList = getHolidaysInPeriod2(dueDate, calculationDate);
+    
+    document.getElementById('resultPenaltyValue').textContent = formatAmount(penalty) + ' рублей';
+    document.getElementById('resultFineValue').textContent = formatAmount(fine) + ' рублей';
+    document.getElementById('resultTotalValue').textContent = formatAmount(totalAmount) + ' рублей';
+    
+    const formattedCompensation = formatAmount(compensationAmount);
+    const formattedPenalty = formatAmount(penalty);
+    const formattedFine = formatAmount(fine);
+    const formattedTotal = formatAmount(totalAmount);
+    
+    let detailsHtml = `
+        <p><strong>Детали расчета:</strong></p>
+        <p>Сумма страхового возмещения: <strong>${formattedCompensation} руб.</strong></p>
+        <p>Период <strong>${formatDate(dueDate)}</strong> - <strong>${formatDate(calculationDate)}</strong>:</p>
+        <p>• Праздничных дней в периоде: <strong>${holidayList.length}</strong></p>
+        <p>• Дата окончания 20-дневного срока (без праздников): <strong>${formatDate(new Date(deadlineDate.getTime() - 24*60*60*1000))}</strong></p>
+        <p>• Дата начала просрочки: <strong>${formatDate(deadlineDate)}</strong></p>
+        <p>• Дней просрочки: <strong>${overdueDays} дней</strong></p>
+    `;
+    
+    if (overdueDays > 0) {
+        detailsHtml += `<p>Ставка неустойки: 1% от размера невыплаченного страхового возмещения за каждый календарный день просрочки</p>`;
+        detailsHtml += `<p>Штраф: 50% от суммы страхового возмещения и неустойки</p>`;
+    } else {
+        detailsHtml += `<p>Неустойка не начисляется, так как не превышен лимит в 20 дней без праздников</p>`;
+    }
+    
+    detailsHtml += `
+        <p><strong>Итоговая сумма к выплате страхователю:</strong></p>
+        <p>${formattedCompensation} руб. (возмещение) + ${formattedPenalty} руб. (неустойка) + ${formattedFine} руб. (штраф) = <strong class="total-amount">${formattedTotal} руб.</strong></p>
+        <p><small><i>В расчете учтены все официальные праздничные дни на 2024-2026 годы.</i></small></p>
+    `;
+    
+    document.getElementById('resultDetailsPayment').innerHTML = detailsHtml;
+    document.getElementById('resultContainerPayment').style.display = 'block';
+}
+
+// Инициализация второго калькулятора
+if (document.getElementById('calculateBtnPayment')) {
+    document.getElementById('calculateBtnPayment').addEventListener('click', calculatePaymentPenalty);
+}
 
