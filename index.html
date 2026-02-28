@@ -21,7 +21,52 @@
         </main>
 
         <div id="service-content"></div>
-
+        
+<div id="calculator-block" style="display: none;">
+    <!-- СЮДА ВСТАВИТЬ ВЕСЬ HTML КАЛЬКУЛЯТОРА -->
+    <div class="calculator-repair-container">
+        <div class="calculator-header">
+            <h1 class="calculator-title">Неустойка за нарушение срока осуществления ремонта по договорам страхования</h1>
+        </div>
+        
+        <div class="calculator-body">
+            <div class="input-group">
+                <label for="repairCost" class="input-label">Стоимость восстановительного ремонта автомобиля с учетом износа (руб.)</label>
+                <input type="number" id="repairCost" class="input-field" placeholder="Введите сумму в рублях" min="0" step="100" value="100000">
+                <div class="input-note">Введите стоимость ремонта, указанную в акте осмотра или калькуляции</div>
+            </div>
+            
+            <div class="input-group">
+                <label for="startDate" class="input-label">Дата предоставления автомобиля в автосервис или дата передачи в страховую компанию для транспортировки на СТО</label>
+                <input type="date" id="startDate" class="input-field">
+                <div class="input-note">Укажите дату, когда автомобиль был передан для ремонта</div>
+            </div>
+            
+            <div class="input-group">
+                <label for="calculationDateRepair" class="input-label">Дата окончания ремонта</label>
+                <input type="date" id="calculationDateRepair" class="input-field">
+                <div class="input-note">Укажите дату, на которую производится расчет неустойки</div>
+            </div>
+            
+            <button id="calculateBtnRepair" class="calculate-button">Рассчитать неустойку</button>
+            
+            <div class="holiday-info">
+                <h4>Внимание!</h4>
+                <p>Неустойка рассчитывается за каждый календарный день просрочки выполнения работ свыше 30 рабочих дней. Первые 30 дней считаются как рабочие (без учета выходных и праздников), а просрочка - в календарных днях.</p>
+                <p><b>Калькулятор предназначен для предварительного расчета. Для точного расчета обратитесь к специалисту.</b></p>
+            </div>
+            
+            <div id="resultContainerRepair" class="result-container" style="display: none;">
+                <h2 class="result-title">Результат расчета</h2>
+                <div class="result-line blue-bg">
+                    <span class="result-label">Неустойка:</span>
+                    <span id="resultValueRepair" class="result-value">0 рублей</span>
+                </div>
+                <div id="resultDetailsRepair" class="result-details"></div>
+            </div>
+        </div>
+    </div>
+</div>
         <footer>
             <p>ⓒ 2025 АвтоправоНСК. Ваш помощник на дорогах.</p>
             <p style="font-size: 0.8rem; color: #888; margin-top: 10px;">
@@ -33,4 +78,5 @@
     <script src="app.js"></script>
 </body>
 </html>
+
 
