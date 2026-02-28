@@ -17,7 +17,8 @@
             <button class="btn btn-blue" onclick="showService('tow-truck')">Эвакуатор</button>
             <button class="btn btn-blue" onclick="showService('commissioner')">Аварийный комиссар</button>
             <button class="btn btn-blue" onclick="showService('lawyer')">Автоюрист</button>
-            <button class="btn btn-calc" onclick="showService('calculator')"> Калькулятор неустойки по ОСАГО</button>
+            <button class="btn btn-calc" onclick="showService('calculator')"> Калькулятор неустойки по ОСАГО (ремонт) </button>
+            <button class="btn btn-calc2" onclick="showService('calculator2')"> Калькулятор неустойки по ОСАГО (страховая выплата)</button>
             <button class="btn btn-white" onclick="showService('dtp-guide')">Что делать при ДТП</button>
         </main>
 
@@ -68,6 +69,68 @@
         </div>
     </div>
 </div>
+        <!-- Первый калькулятор (уже есть) -->
+<div id="calculator-block" style="display: none;">
+    <!-- ... код первого калькулятора ... -->
+</div>
+
+<!-- ВТОРОЙ КАЛЬКУЛЯТОР -->
+<div id="calculator-payment-block" style="display: none;">
+    <!-- СЮДА ВСТАВИТЬ ВЕСЬ HTML ВТОРОГО КАЛЬКУЛЯТОРА -->
+    <div class="calculator-payment-container">
+        <div class="calculator-header">
+            <h1 class="calculator-title">Неустойка за нарушение срока страховой выплаты/срока выдачи направления на ремонт ТС</h1>
+        </div>
+        
+        <div class="calculator-body">
+            
+            <div class="input-group">
+                <label for="compensationAmount" class="input-label">Размер невыплаченного страхового возмещения (руб.)</label>
+                <input type="number" id="compensationAmount" class="input-field" placeholder="Введите сумму в рублях" min="0" step="100" value="50000">
+                <div class="input-note">Введите сумму страхового возмещения, которую страховая компания должна была выплатить</div>
+            </div>
+            
+            <div class="input-group">
+                <label for="dueDate" class="input-label">Дата, когда страховая компания должна была осуществить выплату или выдать направление на ремонт</label>
+                <input type="date" id="dueDate" class="input-field">
+                <div class="input-note">Укажите дату, когда истек срок для осуществления выплаты или выдачи направления на ремонт</div>
+            </div>
+            
+            <div class="input-group">
+                <label for="calculationDatePayment" class="input-label">Дата расчета</label>
+                <input type="date" id="calculationDatePayment" class="input-field">
+                <div class="input-note">Укажите дату, на которую производится расчет неустойки</div>
+            </div>
+            
+            <button id="calculateBtnPayment" class="calculate-button">Рассчитать неустойку и штраф</button>
+            
+            <div class="holiday-info">
+                <h4>Внимание!</h4>
+                <p>Неустойка рассчитывается за каждый день просрочки осуществления страховой выплаты или выдачи направления на ремонт свыше 20 календарных дней (исключаются только праздничные дни) с момента подачи заявления о страховом случае.</p>
+                <p><b>Калькулятор предназначен для предварительного расчета. Для точного расчета обратитесь к специалисту.</b></p>
+            </div>
+            
+            <div id="resultContainerPayment" class="result-container" style="display: none;">
+                <h2 class="result-title">Результат расчета</h2>
+                <div class="result-lines">
+                    <div class="result-line blue-bg">
+                        <span class="result-label">Неустойка:</span>
+                        <span id="resultPenaltyValue" class="result-value">0 рублей</span>
+                    </div>
+                    <div class="result-line blue-bg">
+                        <span class="result-label">Штраф 50%:</span>
+                        <span id="resultFineValue" class="result-value">0 рублей</span>
+                    </div>
+                    <div class="result-line green-bg">
+                        <span class="result-label">Общая сумма к выплате:</span>
+                        <span id="resultTotalValue" class="result-value">0 рублей</span>
+                    </div>
+                </div>
+                <div id="resultDetailsPayment" class="result-details"></div>
+            </div>
+        </div>
+    </div>
+</div>
         <footer>
             <p>ⓒ 2025 АвтоправоНСК. Ваш помощник на дорогах.</p>
             <p style="font-size: 0.8rem; color: #888; margin-top: 10px;">
@@ -79,6 +142,7 @@
     <script src="app.js"></script>
 </body>
 </html>
+
 
 
 
