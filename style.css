@@ -517,8 +517,9 @@ footer {
     }
 }
 .header-logo {
-    width: 5px;  /* Подберите нужный размер */
+    width: 60px;  /* Подберите нужный размер */
     height: auto;
     object-fit: contain;
 }
+
 
