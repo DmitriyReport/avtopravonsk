@@ -8,74 +8,67 @@
 body {
     background-color: #f5f7fa;
     color: #333;
-    line-height: 1.6;
-    padding: 10px;
+    line-height: 1.5;  /* Уменьшили с 1.6 */
+    padding: 8px;  /* Уменьшили с 10px */
 }
 
 .container {
-    max-width: 600px;
+    max-width: 550px;  /* Уменьшили с 600px */
     margin: 0 auto;
     background-color: #ffffff;
-    border-radius: 20px;
-    box-shadow: 0 4px 15px rgba(0, 0, 139, 0.1);
+    border-radius: 16px;  /* Уменьшили с 20px */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);  /* Убрали синеву */
     overflow: hidden;
-    padding: 20px;
+    padding: 16px;  /* Уменьшили с 20px */
 }
 
+/* ШАПКА */
 header {
     text-align: center;
-    padding: 20px 0 15px 0;
-    /* border-bottom удалена */
-    margin-bottom: 25px;
+    padding: 12px 0 8px 0;  /* Уменьшили с 20px 0 15px 0 */
+    margin-bottom: 16px;  /* Уменьшили с 25px */
 }
 
 .brand-title {
-    color: #0d47a1;  /* Темно-синий как у кнопок калькулятора */
-    font-size: 2.2rem;
-    font-weight: 800;
-    letter-spacing: 1px;
+    color: #0d47a1;
+    font-size: 1.8rem;  /* Уменьшили с 2.2rem */
+    font-weight: 700;  /* Уменьшили с 800 */
+    letter-spacing: 0.5px;  /* Уменьшили с 1px */
     line-height: 1.2;
-    margin-bottom: 5px;
+    margin-bottom: 3px;  /* Уменьшили с 5px */
 }
 
 .brand-subtitle {
-    color: #0d47a1;  /* Темно-синий как у кнопок калькулятора */
-    font-size: 2.2rem;
-    font-weight: 800;
-    letter-spacing: 1px;
-    line-height: 1.2;
-    margin-bottom: 5px;
+    color: #1565c0;  /* Сделали светлее для подзаголовка */
+    font-size: 1rem;  /* Уменьшили с 2.2rem */
+    font-weight: 400;  /* Обычный шрифт */
+    letter-spacing: 0.3px;
+    line-height: 1.3;
 }
 
-@media (max-width: 600px) {
-    .brand-title {
-        font-size: 1.8rem;
-    }
-    
-    .brand-subtitle {
-        font-size: 1rem;
-    }
-}
-
+/* КНОПКИ НА ГЛАВНОЙ */
 .main-buttons {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 15px;
-    margin-bottom: 30px;
+    gap: 10px;  /* Уменьшили с 15px */
+    margin-bottom: 20px;  /* Уменьшили с 30px */
 }
 
 .btn {
-    padding: 18px;
+    padding: 12px;  /* Уменьшили с 18px */
     border: none;
-    border-radius: 12px;
-    font-size: 1.1rem;
+    border-radius: 8px;  /* Уменьшили с 12px */
+    font-size: 0.95rem;  /* Уменьшили с 1.1rem */
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;  /* Ускорили анимацию */
     display: block;
     text-align: center;
     text-decoration: none;
     width: 100%;
+    white-space: normal;  /* Разрешаем перенос текста */
+    word-wrap: break-word;  /* Перенос длинных слов */
+    line-height: 1.3;
 }
 
 .btn-blue {
@@ -85,7 +78,7 @@ header {
 
 .btn-blue:hover {
     background-color: #0d6abf;
-    transform: translateY(-2px);
+    transform: translateY(-1px);  /* Уменьшили подъем */
 }
 
 .btn-white {
@@ -96,77 +89,62 @@ header {
 
 .btn-white:hover {
     background-color: #e3f2fd;
+    transform: translateY(-1px);
 }
 
-/* КНОПКИ КАЛЬКУЛЯТОРОВ - ИСПРАВЛЕНО */
-.btn-calc {
+/* КНОПКИ КАЛЬКУЛЯТОРОВ */
+.btn-calc, .btn-calc2 {
     background-color: #0d47a1;
     color: white;
     border: none;
-    padding: 18px;
-    border-radius: 12px;
-    font-size: 1.1rem;
+    padding: 12px;  /* Уменьшили с 18px */
+    border-radius: 8px;  /* Уменьшили с 12px */
+    font-size: 0.95rem;  /* Уменьшили с 1.1rem */
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    width: 100%;
-}
-
-.btn-calc2 {
-    background-color: #0d47a1;
-    color: white;
-    border: none;
-    padding: 18px;
-    border-radius: 12px;
-    font-size: 1.1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);  /* Уменьшили тень */
     width: 100%;
 }
 
 .btn-calc:hover, .btn-calc2:hover {
     background-color: #1565c0;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
-@media (max-width: 600px) {
-    .btn-calc, .btn-calc2 {
-        padding: 15px;
-        font-size: 1rem;
-    }
-}
-
+/* КОНТЕНТ УСЛУГ */
 .service-info {
     background-color: #e3f2fd;
-    padding: 20px;
-    border-radius: 15px;
-    margin-bottom: 20px;
-    border-left: 5px solid #1e88e5;
+    padding: 16px;  /* Уменьшили с 20px */
+    border-radius: 12px;  /* Уменьшили с 15px */
+    margin-bottom: 16px;  /* Уменьшили с 20px */
+    border-left: 4px solid #1e88e5;  /* Уменьшили с 5px */
 }
 
 .service-info h2 {
     color: #1a237e;
-    margin-bottom: 15px;
+    margin-bottom: 10px;  /* Уменьшили с 15px */
+    font-size: 1.3rem;  /* Добавили размер */
 }
 
 .service-info p {
-    margin-bottom: 10px;
+    margin-bottom: 8px;  /* Уменьшили с 10px */
+    font-size: 0.95rem;
 }
 
+/* КОНТАКТНЫЕ КНОПКИ */
 .phone-link {
     display: inline-block;
     background-color: #1e88e5;
     color: white;
-    padding: 12px 25px;
-    border-radius: 50px;
+    padding: 10px 20px;  /* Уменьшили с 12px 25px */
+    border-radius: 40px;  /* Уменьшили с 50px */
     text-decoration: none;
-    font-weight: bold;
-    margin: 10px 0;
+    font-weight: 600;
+    margin: 8px 0;  /* Уменьшили с 10px 0 */
     transition: background-color 0.3s;
+    font-size: 0.95rem;
 }
 
 .phone-link:hover {
@@ -177,39 +155,24 @@ header {
     display: inline-block;
     background-color: #0088cc;
     color: white;
-    padding: 12px 25px;
-    border-radius: 50px;
+    padding: 10px 20px;  /* Уменьшили с 12px 25px */
+    border-radius: 40px;  /* Уменьшили с 50px */
     text-decoration: none;
-    font-weight: bold;
-    margin: 10px 5px 10px 0;
+    font-weight: 600;
+    margin: 8px 5px 8px 0;  /* Уменьшили */
+    transition: background-color 0.3s;
+    font-size: 0.95rem;
 }
 
-.guide-list {
-    list-style: none;  /* Убирает маркеры списка (точки) */
-    margin-left: 0;
-    padding-left: 0;
-}
-
-.guide-list li {
-    margin-bottom: 8px;
-    padding-left: 0;
-    list-style-type: none;  /* Дополнительно убирает точки */
-}
-
-footer {
-    text-align: center;
-    margin-top: 30px;
-    padding-top: 20px;
-    border-top: 1px solid #eee;
-    color: #777;
-    font-size: 0.9rem;
+.tg-link:hover {
+    background-color: #006699;
 }
 
 .contact-buttons {
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    margin: 20px 0;
+    gap: 8px;  /* Уменьшили с 12px */
+    margin: 16px 0;  /* Уменьшили с 20px */
 }
 
 .contact-buttons a {
@@ -217,55 +180,93 @@ footer {
     display: block;
 }
 
+/* ГАЙД ПО ДТП */
+.guide-list {
+    list-style: none;
+    margin-left: 0;
+    padding-left: 0;
+}
+
+.guide-list li {
+    margin-bottom: 6px;  /* Уменьшили с 8px */
+    padding-left: 0;
+    list-style-type: none;
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+/* ПОДВАЛ */
+footer {
+    text-align: center;
+    margin-top: 20px;  /* Уменьшили с 30px */
+    padding-top: 12px;  /* Уменьшили с 20px */
+    border-top: 1px solid #eee;
+    color: #777;
+    font-size: 0.85rem;  /* Уменьшили с 0.9rem */
+}
+
+.footer-link {
+    color: #1e88e5;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    font-size: 0.85rem;
+}
+
+.footer-link:hover {
+    color: #0d47a1;
+    text-decoration: underline;
+}
+
 /* ============================================ */
 /* СТИЛИ ДЛЯ КАЛЬКУЛЯТОРА 1 */
 /* ============================================ */
 .calculator-repair-container {
     background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+    border-radius: 12px;  /* Уменьшили с 10px */
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);  /* Уменьшили тень */
     width: 100%;
-    max-width: 800px;
+    max-width: 100%;
     overflow: hidden;
-    margin: 0 auto 40px auto;
-    padding: 20px;
+    margin: 0 auto 20px auto;  /* Уменьшили отступ */
+    padding: 16px;  /* Уменьшили с 20px */
 }
 
 .calculator-header {
     text-align: center;
-    margin-bottom: 25px;
-    border-bottom: 2px solid #1e88e5;
-    padding-bottom: 15px;
+    margin-bottom: 16px;  /* Уменьшили с 25px */
+    border-bottom: 1px solid #1e88e5;  /* Уменьшили с 2px */
+    padding-bottom: 10px;  /* Уменьшили с 15px */
 }
 
 .calculator-title {
     color: #1a237e;
-    font-size: 1.5rem;
+    font-size: 1.3rem;  /* Уменьшили с 1.5rem */
     font-weight: 700;
 }
 
 .calculator-body {
-    padding: 10px 0;
+    padding: 5px 0;  /* Уменьшили с 10px */
 }
 
 .input-group {
-    margin-bottom: 25px;
+    margin-bottom: 16px;  /* Уменьшили с 25px */
 }
 
 .input-label {
     display: block;
     font-weight: 600;
-    margin-bottom: 8px;
+    margin-bottom: 5px;  /* Уменьшили с 8px */
     color: #2c3e50;
-    font-size: 1rem;
+    font-size: 0.95rem;  /* Уменьшили с 1rem */
 }
 
 .input-field {
     width: 100%;
-    padding: 12px 15px;
-    border: 2px solid #ddd;
-    border-radius: 8px;
-    font-size: 1rem;
+    padding: 10px 12px;  /* Уменьшили с 12px 15px */
+    border: 1px solid #ddd;  /* Уменьшили с 2px */
+    border-radius: 6px;  /* Уменьшили с 8px */
+    font-size: 0.95rem;
     transition: border-color 0.3s;
 }
 
@@ -275,63 +276,60 @@ footer {
 }
 
 .input-note {
-    font-size: 0.85rem;
+    font-size: 0.8rem;  /* Уменьшили с 0.85rem */
     color: #666;
-    margin-top: 5px;
+    margin-top: 4px;  /* Уменьшили с 5px */
 }
 
 .calculate-button {
     background-color: #1e88e5;
     color: white;
     border: none;
-    padding: 15px 30px;
-    font-size: 1.2rem;
+    padding: 12px 20px;  /* Уменьшили с 15px 30px */
+    font-size: 1rem;  /* Уменьшили с 1.2rem */
     font-weight: 600;
-    border-radius: 8px;
+    border-radius: 6px;  /* Уменьшили с 8px */
     cursor: pointer;
     width: 100%;
-    margin: 20px 0;
+    margin: 16px 0;  /* Уменьшили с 20px 0 */
     transition: background-color 0.3s;
-}
-
-.calculate-button:hover {
-    background-color: #0d6abf;
 }
 
 .holiday-info {
     background-color: #fff3e0;
-    border-left: 4px solid #ff9800;
-    padding: 15px;
-    border-radius: 5px;
-    margin: 20px 0;
+    border-left: 3px solid #ff9800;  /* Уменьшили с 4px */
+    padding: 12px;  /* Уменьшили с 15px */
+    border-radius: 4px;  /* Уменьшили с 5px */
+    margin: 16px 0;  /* Уменьшили с 20px 0 */
 }
 
 .holiday-info h4 {
     color: #e65100;
-    margin-bottom: 10px;
+    margin-bottom: 6px;  /* Уменьшили с 10px */
+    font-size: 1rem;
 }
 
 .result-container {
     background-color: #f8f9fa;
-    border-radius: 8px;
-    padding: 20px;
-    margin-top: 20px;
+    border-radius: 8px;  /* Уменьшили с 8px */
+    padding: 16px;  /* Уменьшили с 20px */
+    margin-top: 16px;  /* Уменьшили с 20px */
 }
 
 .result-title {
     color: #1a237e;
-    font-size: 1.3rem;
-    margin-bottom: 15px;
+    font-size: 1.2rem;  /* Уменьшили с 1.3rem */
+    margin-bottom: 12px;  /* Уменьшили с 15px */
 }
 
 .result-line {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 20px;
-    margin: 20px 0;
-    border-radius: 8px;
-    border-left: 4px solid;
+    padding: 10px 16px;  /* Уменьшили с 15px 20px */
+    margin: 12px 0;  /* Уменьшили с 20px 0 */
+    border-radius: 6px;  /* Уменьшили с 8px */
+    border-left: 3px solid;  /* Уменьшили с 4px */
 }
 
 .blue-bg {
@@ -340,31 +338,28 @@ footer {
 }
 
 .result-label {
-    font-size: 16px;
+    font-size: 14px;  /* Уменьшили с 16px */
     font-weight: 600;
     color: #2c3e50;
 }
 
 .result-value {
-    font-size: 18px;
+    font-size: 16px;  /* Уменьшили с 18px */
     font-weight: 700;
     color: #2c3e50;
 }
 
 .result-details {
     background-color: white;
-    padding: 15px;
-    border-radius: 8px;
+    padding: 12px;  /* Уменьшили с 15px */
+    border-radius: 6px;  /* Уменьшили с 8px */
     border: 1px solid #e0e0e0;
-    line-height: 1.8;
+    line-height: 1.6;
+    font-size: 0.95rem;
 }
 
 .result-details p {
-    margin: 10px 0;
-}
-
-.result-details strong {
-    color: #1e88e5;
+    margin: 8px 0;  /* Уменьшили с 10px */
 }
 
 /* ============================================ */
@@ -372,17 +367,17 @@ footer {
 /* ============================================ */
 .calculator-payment-container {
     background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
     width: 100%;
-    max-width: 800px;
+    max-width: 100%;
     overflow: hidden;
-    margin: 0 auto 40px auto;
-    padding: 20px;
+    margin: 0 auto 20px auto;
+    padding: 16px;
 }
 
 .result-lines {
-    margin: 20px 0;
+    margin: 16px 0;  /* Уменьшили с 20px */
 }
 
 .green-bg {
@@ -392,81 +387,115 @@ footer {
 
 .green-bg .result-value {
     color: #27ae60;
-    font-size: 20px;
+    font-size: 18px;  /* Уменьшили с 20px */
 }
 
 .penalty-section {
     background-color: #fff8e1;
-    border-left: 4px solid #ffc107;
-    padding: 15px;
-    margin: 15px 0;
-    border-radius: 0 8px 8px 0;
+    border-left: 3px solid #ffc107;
+    padding: 12px;
+    margin: 12px 0;
+    border-radius: 0 6px 6px 0;
 }
 
 .fine-section {
     background-color: #ffeaea;
-    border-left: 4px solid #e74c3c;
-    padding: 15px;
-    margin: 15px 0;
-    border-radius: 0 8px 8px 0;
+    border-left: 3px solid #e74c3c;
+    padding: 12px;
+    margin: 12px 0;
+    border-radius: 0 6px 6px 0;
 }
 
 .no-penalty {
     color: #27ae60;
     font-weight: 600;
-    padding: 10px;
+    padding: 8px;
     background-color: #d4edda;
-    border-radius: 5px;
-    margin: 10px 0;
+    border-radius: 4px;
+    margin: 8px 0;
+    font-size: 0.95rem;
 }
 
 .penalty-applied {
     color: #e74c3c;
     font-weight: 600;
-    padding: 10px;
+    padding: 8px;
     background-color: #f8d7da;
-    border-radius: 5px;
-    margin: 10px 0;
+    border-radius: 4px;
+    margin: 8px 0;
+    font-size: 0.95rem;
 }
 
 /* МЕДИА-ЗАПРОСЫ ДЛЯ МОБИЛЬНЫХ */
 @media (max-width: 600px) {
+    .container {
+        padding: 12px;
+    }
+    
+    .brand-title {
+        font-size: 1.6rem;  /* Еще меньше на мобильных */
+    }
+    
+    .brand-subtitle {
+        font-size: 0.95rem;
+    }
+    
+    .btn, .btn-calc, .btn-calc2 {
+        padding: 10px;
+        font-size: 0.9rem;
+    }
+    
+    .service-info h2 {
+        font-size: 1.2rem;
+    }
+    
+    .service-info p,
+    .guide-list li,
+    .phone-link,
+    .tg-link {
+        font-size: 0.9rem;
+    }
+    
+    .phone-link,
+    .tg-link {
+        padding: 8px 16px;
+    }
+    
     .result-line {
         flex-direction: column;
         align-items: flex-start;
-        padding: 12px 15px;
+        padding: 10px 12px;
     }
     
     .result-label {
-        margin-bottom: 5px;
-        font-size: 15px;
+        margin-bottom: 4px;
+        font-size: 14px;
     }
     
     .result-value {
-        font-size: 16px;
+        font-size: 15px;
         align-self: flex-end;
     }
     
     .green-bg .result-value {
-        font-size: 18px;
+        font-size: 16px;
     }
     
     .calculator-title {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
+    }
+    
+    .input-label {
+        font-size: 0.9rem;
+    }
+    
+    .input-field {
+        padding: 8px 10px;
+        font-size: 0.9rem;
+    }
+    
+    .calculate-button {
+        padding: 10px 16px;
+        font-size: 0.95rem;
     }
 }
-/* Стили для ссылки в подвале */
-.footer-link {
-    color: #1e88e5;
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.3s ease;
-}
-
-.footer-link:hover {
-    color: #0d47a1;
-    text-decoration: underline;
-}
-
-
-
