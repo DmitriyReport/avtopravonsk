@@ -1,3 +1,10 @@
+@font-face {
+    font-family: 'STENGAZETA';
+    src: url('STENGAZETA.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -8,41 +15,43 @@
 body {
     background-color: #f5f7fa;
     color: #333;
-    line-height: 1.5;  /* Уменьшили с 1.6 */
-    padding: 8px;  /* Уменьшили с 10px */
+    line-height: 1.5;
+    padding: 8px;
 }
 
 .container {
-    max-width: 550px;  /* Уменьшили с 600px */
+    max-width: 550px;
     margin: 0 auto;
     background-color: #ffffff;
-    border-radius: 16px;  /* Уменьшили с 20px */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);  /* Убрали синеву */
+    border-radius: 16px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
     overflow: hidden;
-    padding: 16px;  /* Уменьшили с 20px */
+    padding: 16px;
 }
 
-/* ШАПКА */
+/* ШАПКА С ШРИФТОМ STENGAZETA */
 header {
     text-align: center;
-    padding: 12px 0 8px 0;  /* Уменьшили с 20px 0 15px 0 */
-    margin-bottom: 16px;  /* Уменьшили с 25px */
+    padding: 12px 0 8px 0;
+    margin-bottom: 16px;
 }
 
 .brand-title {
+    font-family: 'STENGAZETA', 'Arial Black', 'Impact', sans-serif;
     color: #0d47a1;
-    font-size: 1.8rem;  /* Уменьшили с 2.2rem */
-    font-weight: 700;  /* Уменьшили с 800 */
-    letter-spacing: 0.5px;  /* Уменьшили с 1px */
+    font-size: 2rem;
+    letter-spacing: 1px;
     line-height: 1.2;
-    margin-bottom: 3px;  /* Уменьшили с 5px */
+    margin-bottom: 3px;
+    /* Для жирности используем text-shadow если нужно */
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.1);
 }
 
 .brand-subtitle {
-    color: #1565c0;  /* Сделали светлее для подзаголовка */
-    font-size: 1rem;  /* Уменьшили с 2.2rem */
-    font-weight: 400;  /* Обычный шрифт */
-    letter-spacing: 0.3px;
+    font-family: 'STENGAZETA', 'Arial', sans-serif;
+    color: #1565c0;
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
     line-height: 1.3;
 }
 
@@ -50,25 +59,26 @@ header {
 .main-buttons {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 10px;  /* Уменьшили с 15px */
-    margin-bottom: 20px;  /* Уменьшили с 30px */
+    gap: 10px;
+    margin-bottom: 20px;
 }
 
 .btn {
-    padding: 12px;  /* Уменьшили с 18px */
+    padding: 12px;
     border: none;
-    border-radius: 8px;  /* Уменьшили с 12px */
-    font-size: 0.95rem;  /* Уменьшили с 1.1rem */
+    border-radius: 8px;
+    font-size: 0.95rem;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.2s ease;  /* Ускорили анимацию */
+    transition: all 0.2s ease;
     display: block;
     text-align: center;
     text-decoration: none;
     width: 100%;
-    white-space: normal;  /* Разрешаем перенос текста */
-    word-wrap: break-word;  /* Перенос длинных слов */
+    white-space: normal;
+    word-wrap: break-word;
     line-height: 1.3;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .btn-blue {
@@ -78,7 +88,7 @@ header {
 
 .btn-blue:hover {
     background-color: #0d6abf;
-    transform: translateY(-1px);  /* Уменьшили подъем */
+    transform: translateY(-1px);
 }
 
 .btn-white {
@@ -97,13 +107,13 @@ header {
     background-color: #0d47a1;
     color: white;
     border: none;
-    padding: 12px;  /* Уменьшили с 18px */
-    border-radius: 8px;  /* Уменьшили с 12px */
-    font-size: 0.95rem;  /* Уменьшили с 1.1rem */
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 0.95rem;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.2s ease;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);  /* Уменьшили тень */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     width: 100%;
 }
 
@@ -116,20 +126,21 @@ header {
 /* КОНТЕНТ УСЛУГ */
 .service-info {
     background-color: #e3f2fd;
-    padding: 16px;  /* Уменьшили с 20px */
-    border-radius: 12px;  /* Уменьшили с 15px */
-    margin-bottom: 16px;  /* Уменьшили с 20px */
-    border-left: 4px solid #1e88e5;  /* Уменьшили с 5px */
+    padding: 16px;
+    border-radius: 12px;
+    margin-bottom: 16px;
+    border-left: 4px solid #1e88e5;
 }
 
 .service-info h2 {
     color: #1a237e;
-    margin-bottom: 10px;  /* Уменьшили с 15px */
-    font-size: 1.3rem;  /* Добавили размер */
+    margin-bottom: 10px;
+    font-size: 1.3rem;
+    font-family: 'STENGAZETA', 'Arial Black', sans-serif;
 }
 
 .service-info p {
-    margin-bottom: 8px;  /* Уменьшили с 10px */
+    margin-bottom: 8px;
     font-size: 0.95rem;
 }
 
@@ -138,11 +149,11 @@ header {
     display: inline-block;
     background-color: #1e88e5;
     color: white;
-    padding: 10px 20px;  /* Уменьшили с 12px 25px */
-    border-radius: 40px;  /* Уменьшили с 50px */
+    padding: 10px 20px;
+    border-radius: 40px;
     text-decoration: none;
     font-weight: 600;
-    margin: 8px 0;  /* Уменьшили с 10px 0 */
+    margin: 8px 0;
     transition: background-color 0.3s;
     font-size: 0.95rem;
 }
@@ -155,11 +166,11 @@ header {
     display: inline-block;
     background-color: #0088cc;
     color: white;
-    padding: 10px 20px;  /* Уменьшили с 12px 25px */
-    border-radius: 40px;  /* Уменьшили с 50px */
+    padding: 10px 20px;
+    border-radius: 40px;
     text-decoration: none;
     font-weight: 600;
-    margin: 8px 5px 8px 0;  /* Уменьшили */
+    margin: 8px 5px 8px 0;
     transition: background-color 0.3s;
     font-size: 0.95rem;
 }
@@ -171,8 +182,8 @@ header {
 .contact-buttons {
     display: flex;
     flex-direction: column;
-    gap: 8px;  /* Уменьшили с 12px */
-    margin: 16px 0;  /* Уменьшили с 20px */
+    gap: 8px;
+    margin: 16px 0;
 }
 
 .contact-buttons a {
@@ -188,7 +199,7 @@ header {
 }
 
 .guide-list li {
-    margin-bottom: 6px;  /* Уменьшили с 8px */
+    margin-bottom: 6px;
     padding-left: 0;
     list-style-type: none;
     font-size: 0.95rem;
@@ -198,11 +209,11 @@ header {
 /* ПОДВАЛ */
 footer {
     text-align: center;
-    margin-top: 20px;  /* Уменьшили с 30px */
-    padding-top: 12px;  /* Уменьшили с 20px */
+    margin-top: 20px;
+    padding-top: 12px;
     border-top: 1px solid #eee;
     color: #777;
-    font-size: 0.85rem;  /* Уменьшили с 0.9rem */
+    font-size: 0.85rem;
 }
 
 .footer-link {
@@ -223,49 +234,50 @@ footer {
 /* ============================================ */
 .calculator-repair-container {
     background-color: #ffffff;
-    border-radius: 12px;  /* Уменьшили с 10px */
-    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);  /* Уменьшили тень */
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
     width: 100%;
     max-width: 100%;
     overflow: hidden;
-    margin: 0 auto 20px auto;  /* Уменьшили отступ */
-    padding: 16px;  /* Уменьшили с 20px */
+    margin: 0 auto 20px auto;
+    padding: 16px;
 }
 
 .calculator-header {
     text-align: center;
-    margin-bottom: 16px;  /* Уменьшили с 25px */
-    border-bottom: 1px solid #1e88e5;  /* Уменьшили с 2px */
-    padding-bottom: 10px;  /* Уменьшили с 15px */
+    margin-bottom: 16px;
+    border-bottom: 1px solid #1e88e5;
+    padding-bottom: 10px;
 }
 
 .calculator-title {
     color: #1a237e;
-    font-size: 1.3rem;  /* Уменьшили с 1.5rem */
+    font-size: 1.3rem;
     font-weight: 700;
+    font-family: 'STENGAZETA', 'Arial Black', sans-serif;
 }
 
 .calculator-body {
-    padding: 5px 0;  /* Уменьшили с 10px */
+    padding: 5px 0;
 }
 
 .input-group {
-    margin-bottom: 16px;  /* Уменьшили с 25px */
+    margin-bottom: 16px;
 }
 
 .input-label {
     display: block;
     font-weight: 600;
-    margin-bottom: 5px;  /* Уменьшили с 8px */
+    margin-bottom: 5px;
     color: #2c3e50;
-    font-size: 0.95rem;  /* Уменьшили с 1rem */
+    font-size: 0.95rem;
 }
 
 .input-field {
     width: 100%;
-    padding: 10px 12px;  /* Уменьшили с 12px 15px */
-    border: 1px solid #ddd;  /* Уменьшили с 2px */
-    border-radius: 6px;  /* Уменьшили с 8px */
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
     font-size: 0.95rem;
     transition: border-color 0.3s;
 }
@@ -276,60 +288,65 @@ footer {
 }
 
 .input-note {
-    font-size: 0.8rem;  /* Уменьшили с 0.85rem */
+    font-size: 0.8rem;
     color: #666;
-    margin-top: 4px;  /* Уменьшили с 5px */
+    margin-top: 4px;
 }
 
 .calculate-button {
     background-color: #1e88e5;
     color: white;
     border: none;
-    padding: 12px 20px;  /* Уменьшили с 15px 30px */
-    font-size: 1rem;  /* Уменьшили с 1.2rem */
+    padding: 12px 20px;
+    font-size: 1rem;
     font-weight: 600;
-    border-radius: 6px;  /* Уменьшили с 8px */
+    border-radius: 6px;
     cursor: pointer;
     width: 100%;
-    margin: 16px 0;  /* Уменьшили с 20px 0 */
+    margin: 16px 0;
     transition: background-color 0.3s;
+}
+
+.calculate-button:hover {
+    background-color: #0d6abf;
 }
 
 .holiday-info {
     background-color: #fff3e0;
-    border-left: 3px solid #ff9800;  /* Уменьшили с 4px */
-    padding: 12px;  /* Уменьшили с 15px */
-    border-radius: 4px;  /* Уменьшили с 5px */
-    margin: 16px 0;  /* Уменьшили с 20px 0 */
+    border-left: 3px solid #ff9800;
+    padding: 12px;
+    border-radius: 4px;
+    margin: 16px 0;
 }
 
 .holiday-info h4 {
     color: #e65100;
-    margin-bottom: 6px;  /* Уменьшили с 10px */
+    margin-bottom: 6px;
     font-size: 1rem;
 }
 
 .result-container {
     background-color: #f8f9fa;
-    border-radius: 8px;  /* Уменьшили с 8px */
-    padding: 16px;  /* Уменьшили с 20px */
-    margin-top: 16px;  /* Уменьшили с 20px */
+    border-radius: 8px;
+    padding: 16px;
+    margin-top: 16px;
 }
 
 .result-title {
     color: #1a237e;
-    font-size: 1.2rem;  /* Уменьшили с 1.3rem */
-    margin-bottom: 12px;  /* Уменьшили с 15px */
+    font-size: 1.2rem;
+    margin-bottom: 12px;
+    font-family: 'STENGAZETA', 'Arial Black', sans-serif;
 }
 
 .result-line {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 16px;  /* Уменьшили с 15px 20px */
-    margin: 12px 0;  /* Уменьшили с 20px 0 */
-    border-radius: 6px;  /* Уменьшили с 8px */
-    border-left: 3px solid;  /* Уменьшили с 4px */
+    padding: 10px 16px;
+    margin: 12px 0;
+    border-radius: 6px;
+    border-left: 3px solid;
 }
 
 .blue-bg {
@@ -338,28 +355,28 @@ footer {
 }
 
 .result-label {
-    font-size: 14px;  /* Уменьшили с 16px */
+    font-size: 14px;
     font-weight: 600;
     color: #2c3e50;
 }
 
 .result-value {
-    font-size: 16px;  /* Уменьшили с 18px */
+    font-size: 16px;
     font-weight: 700;
     color: #2c3e50;
 }
 
 .result-details {
     background-color: white;
-    padding: 12px;  /* Уменьшили с 15px */
-    border-radius: 6px;  /* Уменьшили с 8px */
+    padding: 12px;
+    border-radius: 6px;
     border: 1px solid #e0e0e0;
     line-height: 1.6;
     font-size: 0.95rem;
 }
 
 .result-details p {
-    margin: 8px 0;  /* Уменьшили с 10px */
+    margin: 8px 0;
 }
 
 /* ============================================ */
@@ -377,7 +394,7 @@ footer {
 }
 
 .result-lines {
-    margin: 16px 0;  /* Уменьшили с 20px */
+    margin: 16px 0;
 }
 
 .green-bg {
@@ -387,7 +404,7 @@ footer {
 
 .green-bg .result-value {
     color: #27ae60;
-    font-size: 18px;  /* Уменьшили с 20px */
+    font-size: 18px;
 }
 
 .penalty-section {
@@ -433,11 +450,11 @@ footer {
     }
     
     .brand-title {
-        font-size: 1.6rem;  /* Еще меньше на мобильных */
+        font-size: 1.7rem;
     }
     
     .brand-subtitle {
-        font-size: 0.95rem;
+        font-size: 1rem;
     }
     
     .btn, .btn-calc, .btn-calc2 {
@@ -499,4 +516,3 @@ footer {
         font-size: 0.95rem;
     }
 }
-
