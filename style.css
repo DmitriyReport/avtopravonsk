@@ -516,3 +516,8 @@ footer {
         font-size: 0.95rem;
     }
 }
+.header-logo {
+    width: 50px;  /* Подберите нужный размер */
+    height: auto;
+    object-fit: contain;
+}
